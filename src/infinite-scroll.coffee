@@ -6,6 +6,8 @@ mod.directive 'infiniteScroll', ['$rootScope', '$window', '$timeout', 'THROTTLE_
                                     ($rootScope, $window, $timeout, THROTTLE_MILLISECONDS) ->
   link: (scope, elem, attrs) ->
     $window = angular.element($window)
+    if attrs.infiniteScrollSelf
+      $window = angular.element(elem)
 
     # infinite-scroll-distance specifies how close to the bottom of the page
     # the window is allowed to be before we trigger a new scroll. The value

@@ -1,4 +1,4 @@
-/* ng-infinite-scroll - v1.0.0 - 2014-01-23 */
+/* ng-infinite-scroll - v1.0.0 - 2014-03-26 */
 var mod;
 
 mod = angular.module('infinite-scroll', []);
@@ -11,6 +11,9 @@ mod.directive('infiniteScroll', [
       link: function(scope, elem, attrs) {
         var checkWhenEnabled, handler, scrollDistance, scrollEnabled, throttle;
         $window = angular.element($window);
+        if (attrs.infiniteScrollSelf) {
+          $window = angular.element(elem);
+        }
         scrollDistance = 0;
         if (attrs.infiniteScrollDistance != null) {
           scope.$watch(attrs.infiniteScrollDistance, function(value) {
